@@ -1,3 +1,5 @@
+from stats import get_num_words
+
 def main():
     book_path = "books/frankenstein.txt"
     file_contents = get_book_text(book_path)
@@ -6,11 +8,6 @@ def main():
     # print(f"{num_words} words found in the document")
     char_occur = get_char_occur(file_contents)
     get_report(char_occur, num_words)
-
-
-def get_num_words(text):
-    words = text.split()
-    return len(words)
 
 
 def get_book_text(path):
