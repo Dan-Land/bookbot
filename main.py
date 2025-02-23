@@ -1,11 +1,16 @@
+import sys
 from stats import get_num_words
 
 def main():
-    book_path = "books/frankenstein.txt"
-    file_contents = get_book_text(book_path)
+    # book_path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    file_contents = get_book_text(sys.argv[1])
     num_words = get_num_words(file_contents)
     # print(file_contents)
-    # print(f"{num_words} words found in the document")
+    print(f"{num_words} words found in the document")
     char_occur = get_char_occur(file_contents)
     get_report(char_occur, num_words)
 
@@ -13,7 +18,7 @@ def main():
 def get_book_text(path):
     with open(path) as f:
         return f.read()
-
+    
 
 def get_char_occur(book):
     char_occur = {}
